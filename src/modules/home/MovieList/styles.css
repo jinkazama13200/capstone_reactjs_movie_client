@@ -1,0 +1,10 @@
+.movie-prev-slide,
+.movie-next-slide {
+  font-size: 50px;
+  color: lightgrey;
+  transition: 0.3s ease-in-out;
+}
+.movie-prev-slide:hover,
+.movie-next-slide:hover {
+  color: grey;
+}
