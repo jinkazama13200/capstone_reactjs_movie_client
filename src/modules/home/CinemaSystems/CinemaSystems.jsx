@@ -174,7 +174,7 @@ export default function CinemaSystems() {
   const [valueTheater, setValueTheater] = useState(0);
   const [theater, setTheater] = useState([]);
 
-  const isMobileScreen = useMediaQuery("(max-width:425px)");
+  const isMobileScreen = useMediaQuery("(max-width:600px)");
 
   const { data: cinemaSys = [], isLoading } = useQuery({
     queryKey: ["cinemaLogo"],

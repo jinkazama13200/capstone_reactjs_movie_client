@@ -23,7 +23,7 @@ export default function MovieSelectSys() {
   const [theaterSelected, setTheaterSelected] = useState([]);
   const [showTimeSelected, setShowTimeSelected] = useState("");
 
-  const isMobileScreen = useMediaQuery("(max-width:425px)");
+  const isMobileScreen = useMediaQuery("(max-width:600px)");
 
   const { data: movies = [] } = useQuery({
     queryKey: ["movies"],
