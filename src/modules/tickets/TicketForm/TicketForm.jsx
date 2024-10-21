@@ -6,6 +6,7 @@ import theme from "../../../theme";
 import currencyFormat from "../../../CurrencyFormat";
 import { useMutation } from "@tanstack/react-query";
 import { purchaseTicket } from "../../../apis/ticketAPI";
+import { useUserContext } from "../../../contexts/UserContext/UserContext";
 
 export default function TicketForm({
   selectedSeatArr,
@@ -19,7 +20,9 @@ export default function TicketForm({
     return result + value.giaVe;
   }, 0);
 
-  const { mutate: onSuccessPurchase, isLoading } = useMutation({
+  const { currentUser } = useUserContext();
+
+  const { mutate: onSuccessPurchase } = useMutation({
     mutationFn: (payload) => purchaseTicket(payload),
     onSuccess: () => {
       window.location.reload();
@@ -34,6 +37,7 @@ export default function TicketForm({
     const objAPI = {
       maLichChieu: maLichChieu,
       danhSachVe: selectedSeatArr,
+      taiKhoanNguoiDung: currentUser?.taiKhoan,
     };
     alert("Mua vé thành công!");
     onSuccessPurchase(objAPI);

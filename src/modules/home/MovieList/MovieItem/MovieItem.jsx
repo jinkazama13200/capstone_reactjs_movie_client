@@ -28,8 +28,8 @@ const MovieTitle = styled("a")`
   font-weight: 600;
   text-overflow: ellipsis;
   padding: 10px 0;
-  color: black;
   height: 40px;
+  color: black;
   word-break: keep-all;
 `;
 const MovieImgDiv = styled("div")`
@@ -38,6 +38,8 @@ const MovieImgDiv = styled("div")`
   background-position: "center";
   background-repeat: no-repeat;
   background-size: 100%;
+  height: 320px;
+  object-fit: cover;
 `;
 
 export default function MovieItem({ item }) {

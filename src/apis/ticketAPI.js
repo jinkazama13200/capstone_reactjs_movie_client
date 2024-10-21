@@ -1,4 +1,3 @@
-import { Await } from "react-router-dom";
 import fetcher from "./fetcher";
 
 export async function getTicketsById(ticketId) {
@@ -8,17 +7,17 @@ export async function getTicketsById(ticketId) {
         MaLichChieu: ticketId,
       },
     });
-    return res.data?.content;
+    return res.data;
   } catch (error) {
-    throw error.response.data?.content;
+    throw error.response.data;
   }
 }
 
 export async function purchaseTicket(payload) {
   try {
     const res = await fetcher.post("/api/QuanLyDatVe/DatVe", payload);
-    return res.data?.content;
+    return res.data;
   } catch (error) {
-    throw error.response.data?.content;
+    throw error.response.data;
   }
 }

@@ -1,6 +1,4 @@
-import React from "react";
-import { useQuery } from "@tanstack/react-query";
-import { getMovieBanner } from "../../../apis/movieAPI";
+import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper/modules";
 import "swiper/css/bundle";
@@ -10,6 +8,7 @@ import {
   MdOutlineKeyboardDoubleArrowLeft,
   MdOutlineKeyboardDoubleArrowRight,
 } from "react-icons/md";
+import { banner_1, banner_2, banner_3 } from "../../../assets/images/index";
 
 const CustomButtonPrevSlide = styled("div")`
   position: absolute;
@@ -37,18 +36,21 @@ const CustomButtonNextSlide = styled("div")`
 `;
 
 export default function Banner() {
-  const {
-    data: banners = [],
-    isLoading,
-    error,
-  } = useQuery({
-    queryKey: ["banners"],
-    queryFn: getMovieBanner,
-  });
+  const [banners, setBanners] = useState([
+    {
+      banner: banner_1,
+    },
+    {
+      banner: banner_2,
+    },
+    {
+      banner: banner_3,
+    },
+  ]);
 
   return (
     <Swiper
-      style={{ position: "relative" }}
+      // style={{ position: "relative" }}
       modules={[Pagination, Navigation]}
       spaceBetween={50}
       slidesPerView={1}
@@ -64,28 +66,30 @@ export default function Banner() {
       }}
       autoplay={{ delay: 1000 }}
     >
-      {banners.map((item) => {
-        return (
-          <SwiperSlide key={item.maBanner}>
-            <div
-              style={{
-                backgroundImage: `url('${item.hinhAnh}')`,
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "cover",
-                height: "auto",
-                backgroundPosition: "center",
-              }}
-            >
-              <img
-                style={{ opacity: 0 }}
-                width="100%"
-                src={item.hinhAnh}
-                alt={item.maPhim}
-              />
-            </div>
-          </SwiperSlide>
-        );
-      })}
+      {banners.length > 0 &&
+        banners.map((item, index) => {
+          return (
+            <SwiperSlide key={index}>
+              <div
+                style={{
+                  backgroundImage: `url('${item.banner}')`,
+                  backgroundRepeat: "no-repeat",
+                  backgroundSize: "cover",
+                  height: "90vh",
+                  backgroundPosition: "center",
+                  objectFit: "cover",
+                }}
+              >
+                <img
+                  style={{ opacity: 0 }}
+                  width="100%"
+                  src={item.banner}
+                  alt={index}
+                />
+              </div>
+            </SwiperSlide>
+          );
+        })}
       <CustomButtonPrevSlide className="button-prev-slide">
         <MdOutlineKeyboardDoubleArrowLeft />
       </CustomButtonPrevSlide>

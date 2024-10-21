@@ -3,9 +3,9 @@ import fetcher from "./fetcher";
 export async function getCinemaSystem() {
   try {
     const res = await fetcher.get("/api/QuanLyRap/LayThongTinHeThongRap");
-    return res.data.content;
+    return res.data;
   } catch (error) {
-    throw error.response.data.content;
+    throw error.response.data;
   }
 }
 
@@ -20,9 +20,9 @@ export async function getTheaterById(cinemaId) {
         },
       }
     );
-    return res.data.content;
+    return res.data;
   } catch (error) {
-    throw error.response.data.content;
+    throw error.response.data;
   }
 }
 
@@ -33,8 +33,8 @@ export async function getCinemaShowTimes(movieId) {
         MaPhim: movieId,
       },
     });
-    return res.data.content;
+    return res.data;
   } catch (error) {
-    throw error.response.data.content;
+    throw error.response.data;
   }
 }

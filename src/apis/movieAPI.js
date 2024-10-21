@@ -1,14 +1,5 @@
 import fetcher from "./fetcher";
 
-export async function getMovieBanner() {
-  try {
-    const res = await fetcher.get("/api/QuanLyPhim/LayDanhSachBanner");
-    return res.data.content;
-  } catch (error) {
-    throw error.response.data.content;
-  }
-}
-
 export async function getMovies() {
   try {
     const res = await fetcher.get("/api/QuanLyPhim/LayDanhSachPhim", {
@@ -16,9 +7,9 @@ export async function getMovies() {
         maNhom: "GP09",
       },
     });
-    return res.data.content;
+    return res.data;
   } catch (error) {
-    throw error.data.content;
+    throw error.data;
   }
 }
 
@@ -29,8 +20,8 @@ export async function getMovieDetails(movieId) {
         MaPhim: movieId,
       },
     });
-    return res.data.content;
+    return res.data;
   } catch (error) {
-    throw error.response.data.content;
+    throw error.response.data;
   }
 }
