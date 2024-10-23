@@ -75,7 +75,6 @@ export default function Banner() {
                   backgroundImage: `url('${item.banner}')`,
                   backgroundRepeat: "no-repeat",
                   backgroundSize: "cover",
-                  height: "90vh",
                   backgroundPosition: "center",
                   objectFit: "cover",
                 }}
