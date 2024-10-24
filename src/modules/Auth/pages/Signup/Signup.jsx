@@ -50,6 +50,8 @@ export default function Signup() {
       email: "",
       soDt: "",
       hoTen: "",
+      maNhom: "GP09",
+      maLoaiNguoiDung: "KhachHang",
     },
     resolver: yupResolver(signupSchema),
     mode: "onTouched",
@@ -73,6 +75,7 @@ export default function Signup() {
 
   const onSubmit = (values) => {
     handleSignUp(values);
+    console.log(values);
   };
 
   return (
